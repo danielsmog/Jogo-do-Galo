@@ -1,6 +1,7 @@
-$(document).ready(function() {
+﻿$(document).ready(function() {
     
         var n;
+
 
         var jogador = 'orange';
         var orange = 'orange';
