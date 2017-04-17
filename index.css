@@ -1,0 +1,20 @@
+
+table {
+    margin:100px auto;
+}
+
+tr {
+    background-color:mediumaquamarine;
+    padding:30px;
+}
+td {
+    width:80px;
+    height:80px;
+}
+td.pink {
+    background-color:hotpink;
+}
+
+td.orange {
+     background-color:darkorange;
+}
