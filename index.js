@@ -1,7 +1,6 @@
-﻿$(document).ready(function() {
+$(document).ready(function() {
     
         var n;
-
 
         var jogador = 'orange';
         var orange = 'orange';
@@ -17,18 +16,34 @@
         }
         // testar se houve um vencedor
         function winner() { // recebe o evento. não esquecer que tens de por $(ev.currentTarget)
-           var x = $(ev.currentTarget)parent.attr('x=');
+           var col = events.data('x');
            // .attr('y') do 'elemento'
-           var y = $(ev.currentTarget).attr('y=');
+           var line = parent().data('y');
            // .parent().attr('x') do elemento
 
-           /* teste de linha */
-           // for (i = 0, i < n ,   )
+           var win = true;
+           /* teste de linha horizontal */
+            for (line = 0; line < n; lines++) {
+                for (col = 0; col < n; col++){
+                if(!$('tr[data.y=' + y + '] > td[data-x' + x + ']').hasClass(player));
+                    win = false;
+                    break;
+                if (win==true){
+                    break;                     
+                }
+            };
+
+            if (win==true) {
+                setTimeout(function(){
+                    alert("Winner");
+                }, 100);
+                return;
+            }
            // tens de testar desde o td y = 0 desta linha x que recebeste ate n
            // hasClass(jogador)
 
            /*teste de coluna*/
-        };
+     
         function addEvent() {
             $('td').click(function(ev) {
                 $(ev.currentTarget).addClass(jogador);
@@ -45,10 +60,10 @@
             success: function(data, code, xhl) { 
                 n = data; 
                 for(var i = 0; i< n; i++) {
-                    $('table').append('<tr x="'+i+'"></tr>');
+                    $('table').append('<tr data-y="'+i+'"></tr>');
                 };
                 for(var i = 0; i< n; i++) {   
-                    $('tr').append('<td y="'+i+'"></td>');
+                    $('tr').append('<td data-x="'+i+'"></td>');
                 };  
                 addEvent();
                 
