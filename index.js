@@ -1,6 +1,6 @@
 ﻿$(document).ready(function() {
     
-        var n;
+        var lines;
 
 
         var jogador = 'orange';
@@ -17,18 +17,29 @@
         }
         // testar se houve um vencedor
         function winner() { // recebe o evento. não esquecer que tens de por $(ev.currentTarget)
-           var x = $(ev.currentTarget)parent.attr('x=');
+           var row = $(ev.currentTarget).attr('data-id=');
            // .attr('y') do 'elemento'
-           var y = $(ev.currentTarget).attr('y=');
+           var col = $(ev.currentTarget).parent.attr('data-id=');
            // .parent().attr('x') do elemento
-
+           debugger;
            /* teste de linha */
+
+           for( lines=0;  lines < row; lines++) {
+              
+               for( col=0 ; row < col ; col++ ) {
+                 if ( !$(ev.currentTarget).attr('data-id=' +row+ 'class') { 
+
+                 };
+           };
+
            // for (i = 0, i < n ,   )
            // tens de testar desde o td y = 0 desta linha x que recebeste ate n
            // hasClass(jogador)
 
            /*teste de coluna*/
         };
+
+   
         function addEvent() {
             $('td').click(function(ev) {
                 $(ev.currentTarget).addClass(jogador);
@@ -45,10 +56,10 @@
             success: function(data, code, xhl) { 
                 n = data; 
                 for(var i = 0; i< n; i++) {
-                    $('table').append('<tr x="'+i+'"></tr>');
+                    $('table').append('<tr data-id="'+i+'"></tr>');
                 };
                 for(var i = 0; i< n; i++) {   
-                    $('tr').append('<td y="'+i+'"></td>');
+                    $('tr').append('<td data-id"'+i+'"></td>');
                 };  
                 addEvent();
                 
