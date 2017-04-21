@@ -1,10 +1,16 @@
 $(document).ready(function() {
-    
+        newGame();
+
         var n;
 
         var jogador = 'orange';
         var orange = 'orange';
         var pink = 'pink';
+
+        var player1Score = 0;
+        var player2Score = 0;
+
+        var gameOver = false;
 
         function changeClass() {
             if (jogador===orange) { 
@@ -14,13 +20,15 @@ $(document).ready(function() {
                 jogador=orange
             }
         }
+
+        function printScore(){
+            $("#player1").html(player1Score);
+            $("#player2").html(player2Score);
+        }
+
         // testar se houve um vencedor
         function winner(events) { 
-            // recebe o evento. não esquecer que tens de por $(ev.currentTarget)
-            // var col = events.data('x');
-            // .attr('y') do 'elemento'
-            // var line = parent().data('y');
-            // .parent().attr('x') do elemento
+
 
            var win = true;
            /* teste de linha horizontal */
@@ -41,7 +49,7 @@ $(document).ready(function() {
                 setTimeout(function(){
                     alert("Winner");
                 }, 100);
-                return;
+                return true;
             }
 
             /* teste de linha vertical */            
@@ -62,10 +70,10 @@ $(document).ready(function() {
                 setTimeout(function(){
                     alert("Winner");
                 }, 100);
-                return;
+                return true;                
             }
      
-        /* teste linha 1ª diagonal 1 */
+        /* teste linha 1ª diagonal  */
             for ( x = 0; x < n; x++){
                 win=true;
                 if(!$('tr[data-y=' + x +'] > td[data-x=' + x + ']').hasClass(jogador)){
@@ -79,7 +87,7 @@ $(document).ready(function() {
                 setTimeout(function(){
                     alert("Winner");
                 }, 100);
-                return;
+                return true;
             }            
         /* teste linha 2ª diagonal */
             for (x = 0; x < n; x++){
@@ -97,29 +105,57 @@ $(document).ready(function() {
                 setTimeout(function(){
                     alert("Winner");
                 }, 100);
-                return;
-            }            
+                return true;
+            }        
+
+            return false;    
         }
 
+        // if ( n = elemento.  ) {
+                        
+        
            // tens de testar desde o td y = 0 desta linha x que recebeste ate n
            // hasClass(jogador)
 
-           /*teste de coluna*/
+        
      
         function addEvent() {
             $('td').click(function(ev) {
-                $(ev.currentTarget).addClass(jogador);
+                if (gameOver){
+                    alert("O jogo terminou. Jogue novamente.");
+                    newGame();
+                    return;   
+                }
+                var elemento = $(ev.currentTarget);
+                if( elemento.hasClass("pink") || elemento.hasClass("orange") ){
+                    return;
+                }
+                elemento.addClass(jogador);
+                    
                 // testar se houve um vencedor
-                winner();
+                if (winner()) {
+                    if (jogador == 'orange'){
+                        player1Score++;
+                    }
+                    else{
+                        player2Score++;
+                    }
+                    printScore();
+                    gameOver = true;
+                }
+                               
                 changeClass();
             });                      
         }
 
-        $.ajax({
+        function newGame() {
+            gameOver = false;
+            $.ajax({
             url:"https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new",
-            data: {num:1, min:2, max:5, base:10, col:1, format:"plain"},
+            data: {num:1, min:2, max:4, base:10, col:1, format:"plain"},
             error: function(xhl, errorcode) { },
             success: function(data, code, xhl) { 
+                $('table').empty();
                 n = data; 
                 for(var i = 0; i< n; i++) {
                     $('table').append('<tr data-y="'+i+'"></tr>');
@@ -131,4 +167,11 @@ $(document).ready(function() {
                 
             }
         })
+    }
+
+    $('a').click(function(){
+        
+        newGame();
+    });
+
 });
