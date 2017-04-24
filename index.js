@@ -122,6 +122,7 @@ $(document).ready(function() {
      
         function addEvent() {
             $('td').click(function(ev) {
+                navigator.vibrate(500);
                 if (gameOver){
                     alert("O jogo terminou. Jogue novamente.");
                     newGame();
@@ -149,12 +150,14 @@ $(document).ready(function() {
                 changeClass();
            
                 //caso de empate
-                if( elemento.hasClass(jogador) && elemento.length == n^2 - 1 ){
-                    alert("Empate! Tente Novamente");
-                    newGame();
-                    return;   
-                }
 
+                // for ( elemento = 0; element > 0 ;elemento++ ){
+                //     if( elemento.hasClass(jogador) && elemento.length == n^2 - 1 ){
+                //         alert("Empate! Tente Novamente");
+                //         newGame();
+                //         return;   
+                //     }
+                // }
             });                      
         }
 
