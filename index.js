@@ -26,7 +26,8 @@ $(document).ready(function() {
             $("#player2").html(player2Score);
         }
 
-        // testar se houve um vencedor
+
+         // testar se houve um vencedor
         function winner(events) { 
 
 
@@ -117,7 +118,7 @@ $(document).ready(function() {
            // tens de testar desde o td y = 0 desta linha x que recebeste ate n
            // hasClass(jogador)
 
-        
+              
      
         function addEvent() {
             $('td').click(function(ev) {
@@ -131,7 +132,8 @@ $(document).ready(function() {
                     return;
                 }
                 elemento.addClass(jogador);
-                    
+
+
                 // testar se houve um vencedor
                 if (winner()) {
                     if (jogador == 'orange'){
@@ -145,6 +147,14 @@ $(document).ready(function() {
                 }
                                
                 changeClass();
+           
+                //caso de empate
+                if( elemento.hasClass(jogador) && elemento.length == n^2 - 1 ){
+                    alert("Empate! Tente Novamente");
+                    newGame();
+                    return;   
+                }
+
             });                      
         }
 
