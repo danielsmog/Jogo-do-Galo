@@ -3,6 +3,7 @@ $(document).ready(function() {
 
         var n;
 
+       
         var jogador = 'orange';
         var orange = 'orange';
         var pink = 'pink';
@@ -11,6 +12,8 @@ $(document).ready(function() {
         var player2Score = 0;
 
         var gameOver = false;
+
+        var jogadas = 0;
 
         function changeClass() {
             if (jogador===orange) { 
@@ -136,36 +139,50 @@ $(document).ready(function() {
 
 
                 // testar se houve um vencedor
+               
                 if (winner()) {
                     if (jogador == 'orange'){
-                        player1Score++;
+                       player1Score++ ;
                     }
                     else{
-                        player2Score++;
+                        player2Score++ ;
+                    }          
+                    
+                    if( player1Score == 3 || player2Score == 3 ) {
+                        player1Score = 0 ;
+                        player2Score = 0 ;
+                        alert("Parabens! Ganhou o melhor de 3 jogos");
                     }
                     printScore();
-                    gameOver = true;
-                }
+                    
+                    gameOver = true;      
+
+                } 
+        
+           
+                 
                                
                 changeClass();
            
                 //caso de empate
-
-                // for ( elemento = 0; element > 0 ;elemento++ ){
-                //     if( elemento.hasClass(jogador) && elemento.length == n^2 - 1 ){
-                //         alert("Empate! Tente Novamente");
-                //         newGame();
-                //         return;   
-                //     }
-                // }
+                
+                jogadas ++;
+               
+                    if( jogadas == n*n && gameOver == false ){
+                        alert("Empate! Tente Novamente");
+                        newGame();
+                        return;   
+                    }
+                
             });                      
         }
 
         function newGame() {
             gameOver = false;
+            jogadas = 0;
             $.ajax({
             url:"https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new",
-            data: {num:1, min:2, max:4, base:10, col:1, format:"plain"},
+            data: {num:1, min:3, max:4, base:10, col:1, format:"plain"},
             error: function(xhl, errorcode) { },
             success: function(data, code, xhl) { 
                 $('table').empty();
@@ -175,7 +192,7 @@ $(document).ready(function() {
                 };
                 for(var i = 0; i< n; i++) {   
                     $('tr').append('<td data-x="'+i+'"></td>');
-                };  
+                };
                 addEvent();
                 
             }
