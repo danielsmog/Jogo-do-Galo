@@ -25,8 +25,14 @@
 
   <!-- splash -->
   <platform name="android">
-    <splash src="galo.png" density="port-hdpi"/>
+    <splash src="splash.png" density="port-ldpi"/>
+    <splash src="splash.png" density="port-hdpi"/>
+    <splash src="splash.png" density="port-mdpi"/>
+    <splash src="splash.png" density="port-xhdpi"/>
   </platform>     
-  <preference name="SplashScreenDelay" value="5000" />
-  <preference name="FadeSplashScreenDuration" value="550"/>
+  <preference name="SplashScreenDelay" value="3500" />
+  <preference name="FadeSplashScreenDuration" value="1000"/>
+  
+  <!-- icon -->
+  <icon src="icon.png" platform="android" />
 </widget>

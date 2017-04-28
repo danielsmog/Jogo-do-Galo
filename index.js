@@ -89,7 +89,7 @@ $(document).ready(function() {
 
             if (win==true) {
                 setTimeout(function(){
-                    alert("Winner");
+                    alert("Winner");    
                 }, 100);
                 return true;
             }            
@@ -125,7 +125,7 @@ $(document).ready(function() {
      
         function addEvent() {
             $('td').click(function(ev) {
-                navigator.vibrate(500);
+                navigator.vibrate(100);
                 if (gameOver){
                     alert("O jogo terminou. Jogue novamente.");
                     newGame();
