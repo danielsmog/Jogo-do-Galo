@@ -1,11 +1,41 @@
-a {
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {  		
+box-sizing: inherit;
+}	
+
+html {	
+	font:  normal 1rem  'Open Sans', sans-serif;  		
+	box-sizing: border-box;		  
+}
+
+
+body{
+    margin: 50px auto;
+    max-width: 768px;
+}
+p {
+    display: inline;
+    margin-right: 50px;
+}
+
+a { font-weight: 600;
     text-decoration:none;
     padding:15px;
+    border-radius: 5px;
     background-color:darkgoldenrod;
+}
+a:hover{
+    background-color:palevioletred;
+    color:#fff;
 }
 
 table {
     margin:100px auto;
+
 }
 
 tr {
