@@ -14,14 +14,15 @@ html {
 
 
 header, section{
-    margin: 100px auto;
+    margin: 45px auto;
     text-align: center;
 }
 
 p {
     display: inline;
-    margin-right: 50px;
+    margin-right:10px;
     font-size: 1.3rem;
+
 }
 
 a { 
