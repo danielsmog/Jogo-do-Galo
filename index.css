@@ -12,17 +12,21 @@ html {
 	box-sizing: border-box;		  
 }
 
+
 header, section{
-    margin: 50px auto;
+    margin: 100px auto;
     text-align: center;
 }
 
 p {
     display: inline;
     margin-right: 50px;
+    font-size: 1.3rem;
 }
 
-a { font-weight: 600;
+a { 
+    font-size: 1.3rem;
+    font-weight: 600;
     text-decoration:none;
     padding:15px;
     border-radius: 5px;
@@ -35,7 +39,6 @@ a:hover{
 
 table {
     margin:0 auto;
-
 }
 
 tr {
@@ -53,7 +56,7 @@ td.pink {
 td.orange {
      background-color:darkorange;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     section p{
         display: block;
     }
