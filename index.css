@@ -12,11 +12,11 @@ html {
 	box-sizing: border-box;		  
 }
 
-
-body{
+header, section{
     margin: 50px auto;
-    max-width: 768px;
+    text-align: center;
 }
+
 p {
     display: inline;
     margin-right: 50px;
@@ -34,7 +34,7 @@ a:hover{
 }
 
 table {
-    margin:100px auto;
+    margin:0 auto;
 
 }
 
@@ -52,4 +52,9 @@ td.pink {
 
 td.orange {
      background-color:darkorange;
+}
+@media screen and (max-width: 500px) {
+    section p{
+        display: block;
+    }
 }
